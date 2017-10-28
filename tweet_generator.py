@@ -4,6 +4,7 @@
 import tweepy
 import csv
 import unicodedata
+import re
 
 # Twitter API credentials
 consumer_key = 'TelkaEC2GUWR0IJogWxkrpZKy'
@@ -50,14 +51,13 @@ def get_all_tweets(screen_name):
         "...%s tweets downloaded so far" % (len(alltweets))
 
     # transform the tweepy tweets into a 2D array that will populate the csv
-    outtweets = [[unicodedata.normalize('NFKD', tweet.text).encode('ascii', 'ignore').decode('utf-8')] for tweet in alltweets]
+    pattern = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+    outtweets = [[pattern.sub('', unicodedata.normalize('NFKD', tweet.text).encode('ascii', 'ignore').decode('utf-8').replace("\n"," "))] for tweet in alltweets]
 
     # write the csv
     with open("%s_tweets.csv" % screen_name, "wt") as f:
         writer = csv.writer(f)
-        #writer.writerow(["id", "created_at", "text"])
         writer.writerows(outtweets)
-
     pass
 
 if __name__ == '__main__':
