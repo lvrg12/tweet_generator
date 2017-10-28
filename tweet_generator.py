@@ -50,14 +50,7 @@ def get_all_tweets(screen_name):
         "...%s tweets downloaded so far" % (len(alltweets))
 
     # transform the tweepy tweets into a 2D array that will populate the csv
-
-    # text contains random characters throughout
-    outtweets = [[unicodedata.normalize('NFKD', tweet.text).encode('ascii', 'ignore')] for tweet in alltweets]
-    #outtweets = [[tweet.text.encode("utf-8")] for tweet in alltweets]
-
-    # potential UnicodeEncodeError
-    #outtweets = [[tweet._json['text']] for tweet in alltweets]
-    #outtweets = [[unicodedata.normalize('NFKD', tweet._json['text']).encode('ascii', 'ignore')] for tweet in alltweets]
+    outtweets = [[unicodedata.normalize('NFKD', tweet.text).encode('ascii', 'ignore').decode('utf-8')] for tweet in alltweets]
 
     # write the csv
     with open("%s_tweets.csv" % screen_name, "wt") as f:
