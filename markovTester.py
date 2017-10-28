@@ -13,25 +13,10 @@ with open('realDonaldTrump_tweets.csv') as fp:
         markov.data(line, True)
 markov.data('', False)
 
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-print(*markov.generate(16, start=['sentence', 'start']))
-
+n = 0
+while(n<20):
+    print(*markov.generate(16, start=['sentence', 'start']))
+    n = n + 1
 
 markov.save()
 
