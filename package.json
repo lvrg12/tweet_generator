@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lvrg12/tweet_generator#readme",
   "dependencies": {
+    "child_process": "^1.0.2",
     "express": "^4.16.2"
   }
 }
