@@ -7,13 +7,19 @@ import unicodedata
 import re
 import os.path
 import markovify
+import sys
+import json
+
+def read_in():
+    lines = sys.stdin.readlines()
+    #Since our input would only be having one line, parse our JSON data from that
+    return json.loads(lines[0])
 
 # Twitter API credentials
 consumer_key = 'TelkaEC2GUWR0IJogWxkrpZKy'
 consumer_secret = 'ENYYJseZJ1IY0wqXUSnEj0i2L0Xz3v2c6MRvPEzY6hnrt3ZEEj'
 access_token = '1620837440-0p8voswXhMYGO8upThRqeGwzUuh3TI9sPnQkZim'
 access_secret = 'obvlWiW1Tvkdl1JYyA6hbIrJ96yvq1OS2hILRHs3R0HHy'
-
 
 def get_all_tweets(screen_name):
     # Twitter only allows access to a users most recent 3240 tweets with this method
@@ -71,9 +77,12 @@ def get_all_tweets(screen_name):
         writer.writerows(outtweets)
     pass
 
-if __name__ == '__main__':
+def main():
+    #get our data as an array from read_in()
+    lines = read_in()
+
     # pass in the username of the account you want to download
-    user = "realDonaldTrump"
+    user = lines
 
     if not os.path.isfile("%s_tweets.csv" % user):
         get_all_tweets(user)
@@ -88,3 +97,7 @@ if __name__ == '__main__':
     # Print three randomly-generated sentences of no more than 140 characters
     for i in range(20):
         print(text_model.make_short_sentence(140))
+    
+
+if __name__ == '__main__':
+    main()
