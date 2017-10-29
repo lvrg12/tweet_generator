@@ -1,0 +1,22 @@
+{
+  "name": "tweet_generator",
+  "version": "1.0.0",
+  "description": "Web-app which asks users to decide if a tweet is original or auto-generated.",
+  "main": "sample.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvrg12/tweet_generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lvrg12/tweet_generator/issues"
+  },
+  "homepage": "https://github.com/lvrg12/tweet_generator#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
